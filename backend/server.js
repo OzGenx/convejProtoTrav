@@ -1,7 +1,7 @@
 // bring in expess, using common js module not es6
-const express = require('express')
-const dotenv = require('dotenv')
-const products = require('./data/products')
+import express from 'express'
+import dotenv from 'dotenv'
+import products from './data/products.js'
 
 dotenv.config()
 
