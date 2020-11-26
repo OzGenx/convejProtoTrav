@@ -124,6 +124,40 @@ const getMyOrders = asyncHandler(async (req, res) => {
     res.json(orders)
 
 })
+
+// @desc Get all orders 
+// @route Get /api/orders
+// @access Private/admin (Private requires a token to access)
+const getOrders = asyncHandler(async (req, res) => {
+    // to fetch the order
+    const orders = await Order.find({ }).populate('user', 'id name')
+
+    res.json(orders)
+
+})
+
+// @desc Update order to delivered
+// @route Get /api/orders/:id/deliver
+// @access Private/admin (Private requires a token to access)
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+    // to fetch the order
+    const order = await Order.findById(req.params.id)
+
+    if(order) {
+        order.isDelivered = true
+        order.deliveredAt = Date.now()
+        
+        const updatedOrder = await order.save()
+
+        res.json(updatedOrder)
+    } else {
+        res.status(404)
+        throw new Error('Order not Found')
+    }
+
+})
+
+
 export {
-    addOrderItems, getOrderById, updateOrderToPaid, getMyOrders
+    addOrderItems, getOrderById, updateOrderToPaid, updateOrderToDelivered, getMyOrders, getOrders
 }
