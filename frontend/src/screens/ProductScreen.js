@@ -59,12 +59,12 @@ const ProductScreen = ({ history, match }) => {
     <>
     <Row>
         <Meta title={product.name} />
-    <Col sm={12} md={8} lg={4}>
+    <Col className='product-page-section' sm={12} md={8} lg={4}>
     {/* fluid keeps the image in its container */}
         <Image src={product.image} alt={product.name} fluid></Image>
     </Col>
     
-    <Col sm={12} md={8} lg={4}>
+    <Col className='product-page-section' sm={12} md={8} lg={4}>
         {/* Variant of flush takes away the border */}
         <ListGroup variant='flush'>
             
@@ -87,7 +87,7 @@ const ProductScreen = ({ history, match }) => {
         </ListGroup>
     </Col>
 
-     <Col sm={12} md={6} lg={3} >
+     <Col className='product-page-section' sm={12} md={6} lg={3} >
         <Card variant='flush'>
             <ListGroup.Item>
                 <Row>
@@ -143,7 +143,7 @@ const ProductScreen = ({ history, match }) => {
 </Row>
 
 <Row>
-    <Col md={6}>
+    <Col className='product-page-section' md={6}>
         <h2>Reviews</h2>
         {product.reviews.length === 0 && <Message>No Reviews</Message>}
         <ListGroup variant='flush'>
